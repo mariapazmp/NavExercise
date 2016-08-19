@@ -29,6 +29,8 @@ requestFunction('GET', '/api/nav.json')
  navFunction(response);
 })
 
+
+
 .catch(function (err) {
   console.error('Augh, there was an error!', err.statusText);
 });

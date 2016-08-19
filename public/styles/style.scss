@@ -16,39 +16,73 @@ $gray : #eee;
 $t-black : rgba(0, 0, 0, 0.5);
 
 
-/* Reset style */
+/* Reset styles */
   html {min-height: 100%;}
-  body {position: relative; }
-  html, body, ul, li {margin: 0; padding: 0}
-  a {text-decoration: none;}
-  fieldset { border: none; }
-  .clear { clear: both; display: block; }
-  a { text-decoration: none; color: #000; }
-  a:hover { text-decoration: none; }
+  body {position: relative;}
   li, ul, body, div, span, p, h1, h2, h3, input { margin: 0px; padding: 0px; }
   ul { list-style-type: none; }
   img { border: none; }
-  body, html { font-size: 14px; color: #231f20; }
-  button {background-color: transparent; border: none;}
+
+  html, body, ul, li {
+  	margin: 0; 
+  	padding: 0
+  }
+
+  fieldset { border: none; }
+
+  .clear {
+  	clear: both;
+  	display: block;
+  }
+
+  a { 
+  	text-decoration: none; 
+  	color: #000;
+
+  	&:hover {
+  		text-decoration: none;
+  		transition: background-color 0.6s, color 0.6s;
+		-o-transition: background-color 0.6s, color 0.6s;
+		-moz-transition: background-color 0.6s, color 0.6s;
+		-webkit-transition: background-color 0.6s, color 0.6s;
+  	}
+
+  	&.menu-a {
+		padding-right:15px;
+
+		&:focus {
+		background-color: #FFF;
+		color: $magenta!important;
+		}
+	} 
+  }
+
+  body, html { 
+  	font-size: 14px; 
+  	color: #231f20; 
+  }
+
+  button {
+  	background-color: transparent; 
+  	border: none;
+  }
 
 
-/* General Styles */
-
-a:hover {
-	transition: background-color 0.6s, color 0.6s;
-	-o-transition: background-color 0.6s, color 0.6s;
-	-moz-transition: background-color 0.6s, color 0.6s;
-	-webkit-transition: background-color 0.6s, color 0.6s;
-}
+/*-------- General Styles --------*/
 
 .submenu {
 	padding: 12px 0;
 	position: absolute;
 	background-color: #FFF;
 	z-index: 100;
+	width: 140%;
+	left:-9999px;
+	position:absolute;
+	top:76px;
   
 	li {
 		float: none !important;
+		margin:0;
 	}
 	
 	a {
@@ -57,12 +91,14 @@ a:hover {
 		clear: both!important;
 		font: 16px/1 Galaxie!important;
 		color: #777!important;
-	}	
-	a:hover {
+		width: 100%; 
+		box-sizing: border-box;
+
+		&:hover {
 		background-color: $gray !important;
 		color: $magenta !important
-	}			
-			
+		}	
+	}		
 }
   
 
@@ -86,8 +122,76 @@ a:hover {
 	margin-left: 50px;
 }
 
+.sidenav { 
+	height: 100%;
+	width: 0;
+	position: fixed;
+	z-index: 1;
+	top: 0;
+	left: 0;
+	overflow-x: hidden;
+	transition: 0.5s;
 
-/* Index Styles */
+	a {
+	  	padding: 10px 10px 10px 24px;
+		color: #1a1a1a;
+	    font-size: 21px;
+	    font-family: huge;
+	    display: block;
+
+	    &:hover {background-color: $gray}
+	 }    
+	
+	.top{
+		padding: 20px 24px;
+		background-color: $magenta;
+	}
+	
+	.logo {
+		height: 20px;		
+		img {max-width: 50px;}
+	}
+
+	.copy {
+	    background-color: #FFF;
+	    width: 80%;
+	    padding: 25px;
+	    font-family: 'Open Sans', sans-serif;
+	    position: absolute;
+	    bottom: 0;
+	}
+}
+
+.submenuxs {
+    a {
+      padding: 15.5px 24px !important;
+      display: block !important;
+      clear: both !important;
+      font: 17px/1 Galaxie !important;
+      color: #777 !important;
+    }
+
+    a:hover {
+      background-color: $gray;
+      color: $magenta!important;
+    }
+
+}
+
+.menuxs {
+	padding-top: 12px;
+	background-color: #FFF;
+}
+
+.link-subxs {
+    background-size: 48px auto;
+    background-image: url('../images/ic_arrow.svg');
+    background-repeat:  no-repeat;
+    background-position: right center;
+}
+
+
+/*-------- Index Styles --------*/
 
 #content {
 	transition: margin-left .5s;
@@ -105,33 +209,33 @@ a:hover {
 		
 		img {max-width: 60px;}
 	}
-
-	#nav { 	
-		z-index:2;
-		
-		li{ 
-			float: left;
-			display: block;
-			position:relative;
-		}
-		
-		a {
-			float: left;
-			padding: 24px 24px 25px 24px;
-			color: #FFF; font-size: 21px;
-			font-family: huge;
-			display: block;			
-		}
-		
-		a:hover {
-				background-color: #FFF;
-				color:$magenta;
-				text-decoration: none;
-		}
-	}	
 }
-  
-  
+
+#nav { 	
+	z-index:2;
+	
+	li{ 
+		float: left;
+		display: block;
+		position:relative;
+	}
+	
+	a {
+		float: left;
+		padding: 24px 24px 25px 24px;
+		color: #FFF; font-size: 21px;
+		font-family: huge;
+		display: block;	
+
+		&:hover {
+			background-color: #FFF;
+			color:$magenta;
+			text-decoration: none;
+		}		
+	}		
+}	
+
+
 #index {
 	.main-slide {
 		position: relative;
@@ -178,7 +282,6 @@ a:hover {
 } 
 
 
-
 #footer {
 	font-family: 'Open Sans', sans-serif;
 	background-color: #e7e7e7;
@@ -208,77 +311,7 @@ a:hover {
 		color: #939393;
 		font-size: 14px;
 	}
-}
-  
-
-.sidenav { 
-	height: 100%;
-	width: 0;
-	position: fixed;
-	z-index: 1;
-	top: 0;
-	left: 0;
-	overflow-x: hidden;
-	transition: 0.5s;
-
-  a {
-    padding: 10px 10px 10px 24px;
-    color: #1a1a1a;
-    font-size: 21px;
-    font-family: huge;
-    display: block;
-  }
-
-  a:hover {background-color: $gray}  
-	
-	.top{
-		padding: 20px 24px;
-		background-color: $magenta;
-	}
-	
-	.logo {
-		height: 20px;		
-		img {max-width: 50px;}
-	}
-	
-	.menuxs {
-		padding-top: 12px;
-		background-color: #FFF;
-	}
-
-  .link-subxs {
-    background-size: 48px auto;
-    background-image: url('../images/ic_arrow.svg');
-    background-repeat:  no-repeat;
-    background-position: right center;
-  }
-
-  .submenuxs {
-    a {
-      padding: 15.5px 24px !important;
-      display: block !important;
-      clear: both !important;
-      font: 17px/1 Galaxie !important;
-      color: #777 !important;
-    }
-
-    a:hover {
-      background-color: $gray;
-      color: $magenta!important;
-    }
-
-  }
-
-  .copy {
-    background-color: #FFF;
-    width: 80%;
-    padding: 25px;
-    font-family: 'Open Sans', sans-serif;
-    position: absolute;
-    bottom: 0;
-  }
-
-}
+}  
 
   
 
@@ -286,22 +319,8 @@ a:hover {
   The behavior of the Desktop Navigation menu were developed with the following CSS rules
 */
 
-#nav {
-	ul {
-		left:-9999px; position:absolute; top:76px; width:auto;
-	}
-	
-	> li > a {overflow:hidden;}
-}
-  
+#nav > li > a {overflow:hidden;}
  
-
-
-  #nav li a.menu-a { padding-right:15px;}
-  #nav li a.menu-a:focus {background-color: #FFF; color: $magenta!important;}
-  #nav ul li { margin:0;}
-  #nav li .dd {width: 140%}
-  #nav li .dd li a { width: 100%; box-sizing: border-box;}
 
 /*Following line makes appear the submenu options*/
   #nav li a:focus { outline-width:0;}
@@ -316,8 +335,7 @@ a:hover {
   #navxs ul { left:-9999px; position:relative; height: 0; top:0px; width:auto;}
   #navxs > li > a {overflow:hidden;}
 
-  #navxs li a.menu-a { padding-right:15px;}
-  #navxs li a.menu-a:focus {background-color: #FFF; color: $magenta!important;}
+  
   #navxs a.menu-a:focus .dd {height: 100%}
 
   #navxs ul li { margin:0;}
