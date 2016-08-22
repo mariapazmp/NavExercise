@@ -8,6 +8,21 @@
 
 @import "fonts.css";
 
+$desktop-width: 1200px;
+$tablet-width: 968px;
+$smartphone-width: 768px;
+
+@mixin desktop {
+	@media (max-width: #{$desktop-width}){ 
+	  @content;
+	}
+}
+
+@mixin tablet {
+	@media (max-width: #{tablet-width}){ 
+	  @content;
+	}
+}
 
 /* Variables */
 
@@ -138,6 +153,7 @@ $t-black : rgba(0, 0, 0, 0.5);
 	    font-size: 21px;
 	    font-family: huge;
 	    display: block;
+	    overflow: hidden;
 
 	    &:hover {background-color: $gray}
 	 }    
@@ -163,12 +179,20 @@ $t-black : rgba(0, 0, 0, 0.5);
 }
 
 .submenuxs {
+	left:-9999px;
+	position:relative; 
+	height: 0; 
+	top:0px; 
+	width:auto;
+
     a {
       padding: 15.5px 24px !important;
       display: block !important;
       clear: both !important;
       font: 17px/1 Galaxie !important;
       color: #777 !important;
+      width: 100%; 
+      box-sizing: border-box;
     }
 
     a:hover {
@@ -260,6 +284,14 @@ $t-black : rgba(0, 0, 0, 0.5);
 		  margin: 0 auto; 
 		  color: #FFF; 
 		  text-align: center; 
+
+		  @include desktop {
+		  	width: 80%;
+		  }
+
+		  @include tablet {
+		  	font: 12vmin/1 huge;
+		  }
 		} 
 	}
   
@@ -270,6 +302,12 @@ $t-black : rgba(0, 0, 0, 0.5);
 			font: 24px/1.5 Galaxie;
 			margin: 0 auto;
 			width: 968px;
+
+			@include tablet {
+				width: 92%;
+				padding-left: 4%;
+				padding-right: 4%;
+			}
 		}
 	}
 	
@@ -313,44 +351,48 @@ $t-black : rgba(0, 0, 0, 0.5);
 	}
 }  
 
-  
+#ic-toggle {
+	background-image: url('../images/toggle-open.svg'); 
+	background-repeat: no-repeat; 
+	background-position: center center; 
+	height: 20px; 
+	width: 20px; 
+	display: none; 
+	cursor: pointer; 
+	float: left; 
+	padding: 20px 24px; 
+	height: 20px;
+} 
 
-/*Desktop Nav menu 
-  The behavior of the Desktop Navigation menu were developed with the following CSS rules
-*/
+/*  */
 
-#nav > li > a {overflow:hidden;}
- 
+#nav {
+	a {
+		overflow:hidden;
+		&:focus { outline-width:0;} 
+	}	
+}
 
-/*Following line makes appear the submenu options*/
-  #nav li a:focus { outline-width:0;}
-  #nav li a:active + ul.dd, #nav li a:focus + ul.dd, #nav li ul.dd:hover {
-      left:0; 
-    }
+#nav li a:active + .submenu, 
+#nav li a:focus + .submenu { 
+    left:0; 
+}
 
 
 /*Mobile Nav menu */
-#navxs {position: relative;}
-  #navxs,#navxs ul { list-style:none; margin:0;  }
-  #navxs ul { left:-9999px; position:relative; height: 0; top:0px; width:auto;}
-  #navxs > li > a {overflow:hidden;}
+#navxs {
+	a.menu-a:focus .submenuxs {height: 100%}
+	a:focus { outline-width:0;}
+}
 
-  
-  #navxs a.menu-a:focus .dd {height: 100%}
-
-  #navxs ul li { margin:0;}
-  #navxs li .dd {width: 140%}
-  #navxs li .dd li a { width: 100%; box-sizing: border-box;}
-
-
-  #navxs li a:focus { outline-width:0;}
-
-  /*popups*/
-  #navxs li a:active + ul.dd, #navxs li a:focus + ul.dd, #navxs li ul.dd:hover {
-      left:0; height: 100%; }
+#navxs li a:active + ul.dd, 
+#navxs li a:focus + ul.dd, 
+#navxs li ul.dd:hover {
+    left:0; height: 100%; 
+}
 
 
-#ic-toggle {background-image: url('../images/toggle-open.svg'); background-repeat: no-repeat; background-position: center center; height: 20px; width: 20px; display: none; cursor: pointer; float: left; padding: 20px 24px; height: 20px;}
+
 
 
 
@@ -358,14 +400,10 @@ $t-black : rgba(0, 0, 0, 0.5);
 /*--------- Media queries ---------*/
 
 
-@media (max-width: 1200px){ /* Large devices */
-  #index .main-slide .text h1 {width: 80%}
-}
-
 
 @media (max-width: 968px){
-  #index .article .text {width: 92%;padding-left: 4%;padding-right: 4%;}
-  #index .main-slide .text h1 {font: 12vmin/1 huge;}
+  #index .article .text {}
+  
 
 }
 

@@ -120,7 +120,8 @@ button {
     color: #1a1a1a;
     font-size: 21px;
     font-family: huge;
-    display: block; }
+    display: block;
+    overflow: hidden; }
     .sidenav a:hover {
       background-color: #eee; }
   .sidenav .top {
@@ -138,15 +139,23 @@ button {
     position: absolute;
     bottom: 0; }
 
-.submenuxs a {
-  padding: 15.5px 24px !important;
-  display: block !important;
-  clear: both !important;
-  font: 17px/1 Galaxie !important;
-  color: #777 !important; }
-.submenuxs a:hover {
-  background-color: #eee;
-  color: #ec008c !important; }
+.submenuxs {
+  left: -9999px;
+  position: relative;
+  height: 0;
+  top: 0px;
+  width: auto; }
+  .submenuxs a {
+    padding: 15.5px 24px !important;
+    display: block !important;
+    clear: both !important;
+    font: 17px/1 Galaxie !important;
+    color: #777 !important;
+    width: 100%;
+    box-sizing: border-box; }
+  .submenuxs a:hover {
+    background-color: #eee;
+    color: #ec008c !important; }
 
 .menuxs {
   padding-top: 12px;
@@ -212,12 +221,23 @@ button {
     margin: 0 auto;
     color: #FFF;
     text-align: center; }
+    @media (max-width: 1200px) {
+      #index .main-slide h1 {
+        width: 80%; } }
+    @media (max-width: tablet-width) {
+      #index .main-slide h1 {
+        font: 12vmin/1 huge; } }
 #index .article {
   margin-top: 60px; }
   #index .article .text {
     font: 24px/1.5 Galaxie;
     margin: 0 auto;
     width: 968px; }
+    @media (max-width: tablet-width) {
+      #index .article .text {
+        width: 92%;
+        padding-left: 4%;
+        padding-right: 4%; } }
 #index .h1-xs {
   font: 44px/1 huge;
   display: none;
@@ -248,58 +268,6 @@ button {
     color: #939393;
     font-size: 14px; }
 
-/*Desktop Nav menu 
-  The behavior of the Desktop Navigation menu were developed with the following CSS rules
-*/
-#nav > li > a {
-  overflow: hidden; }
-
-/*Following line makes appear the submenu options*/
-#nav li a:focus {
-  outline-width: 0; }
-
-#nav li a:active + ul.dd, #nav li a:focus + ul.dd, #nav li ul.dd:hover {
-  left: 0; }
-
-/*Mobile Nav menu */
-#navxs {
-  position: relative; }
-
-#navxs, #navxs ul {
-  list-style: none;
-  margin: 0; }
-
-#navxs ul {
-  left: -9999px;
-  position: relative;
-  height: 0;
-  top: 0px;
-  width: auto; }
-
-#navxs > li > a {
-  overflow: hidden; }
-
-#navxs a.menu-a:focus .dd {
-  height: 100%; }
-
-#navxs ul li {
-  margin: 0; }
-
-#navxs li .dd {
-  width: 140%; }
-
-#navxs li .dd li a {
-  width: 100%;
-  box-sizing: border-box; }
-
-#navxs li a:focus {
-  outline-width: 0; }
-
-/*popups*/
-#navxs li a:active + ul.dd, #navxs li a:focus + ul.dd, #navxs li ul.dd:hover {
-  left: 0;
-  height: 100%; }
-
 #ic-toggle {
   background-image: url("../images/toggle-open.svg");
   background-repeat: no-repeat;
@@ -312,19 +280,29 @@ button {
   padding: 20px 24px;
   height: 20px; }
 
-/*--------- Media queries ---------*/
-@media (max-width: 1200px) {
-  /* Large devices */
-  #index .main-slide .text h1 {
-    width: 80%; } }
-@media (max-width: 968px) {
-  #index .article .text {
-    width: 92%;
-    padding-left: 4%;
-    padding-right: 4%; }
+/*  */
+#nav a {
+  overflow: hidden; }
+  #nav a:focus {
+    outline-width: 0; }
 
-  #index .main-slide .text h1 {
-    font: 12vmin/1 huge; } }
+#nav li a:active + .submenu,
+#nav li a:focus + .submenu {
+  left: 0; }
+
+/*Mobile Nav menu */
+#navxs a.menu-a:focus .submenuxs {
+  height: 100%; }
+#navxs a:focus {
+  outline-width: 0; }
+
+#navxs li a:active + ul.dd,
+#navxs li a:focus + ul.dd,
+#navxs li ul.dd:hover {
+  left: 0;
+  height: 100%; }
+
+/*--------- Media queries ---------*/
 @media (max-width: 768px) {
   /*xs devices - Mobile */
   #header {
